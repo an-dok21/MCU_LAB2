@@ -1,6 +1,9 @@
-../Core/Src/segment7display.c:10:5:convertBinChar	16	static
-../Core/Src/segment7display.c:14:6:convertState	40	static
-../Core/Src/segment7display.c:25:6:display	32	static
-../Core/Src/segment7display.c:32:6:display7Segment	24	static
-../Core/Src/segment7display.c:71:6:displayHandler	16	static
-../Core/Src/segment7display.c:83:6:displayPeriodLed	16	static
+../Core/Src/segment7display.c:15:5:convertBinChar	16	static
+../Core/Src/segment7display.c:19:6:convertState	40	static
+../Core/Src/segment7display.c:30:6:display	32	static
+../Core/Src/segment7display.c:37:6:display7Segment	24	static
+../Core/Src/segment7display.c:76:6:displayHandler	16	static
+../Core/Src/segment7display.c:89:6:displayPeriodLed	16	static
+../Core/Src/segment7display.c:103:6:digitalClock	24	static
+../Core/Src/segment7display.c:133:6:updateClockBuffer	16	static
+../Core/Src/segment7display.c:142:6:update7SEG	16	static

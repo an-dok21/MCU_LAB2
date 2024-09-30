@@ -89,19 +89,31 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_Base_Start_IT(&htim2); // Internal source timer2 initialization
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   // Set timer duration
-  setTimer(50);
-  int num = 1;
-  int *numPtr = &num;
+  setTimer(25);
+  setLedTimer(100);
+  int hour = 14, min = 40, sec = 58;
+  int *hourPtr = &hour;
+  int *minPtr = &min;
+  int *secPtr = &sec;
+
+  int idx = 0;
+  int *idxPtr = &idx;
+
+  int timerDuration = 25;
   while (1)
   {
     /* USER CODE END WHILE */
-	  displayHandler(numPtr);
+	  if (doubleLedFlag == 1) {
+		  HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
+		  setLedTimer(100);
+	  }
+	  digitalClock(hourPtr, minPtr, secPtr, idxPtr, timerDuration);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -204,14 +216,17 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin|ENABLE0_Pin|ENABLE1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, DOT_Pin|LED_RED_Pin|ENABLE0_Pin|ENABLE1_Pin
+                          |ENABLE2_Pin|ENABLE3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
                           |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : LED_RED_Pin ENABLE0_Pin ENABLE1_Pin */
-  GPIO_InitStruct.Pin = LED_RED_Pin|ENABLE0_Pin|ENABLE1_Pin;
+  /*Configure GPIO pins : DOT_Pin LED_RED_Pin ENABLE0_Pin ENABLE1_Pin
+                           ENABLE2_Pin ENABLE3_Pin */
+  GPIO_InitStruct.Pin = DOT_Pin|LED_RED_Pin|ENABLE0_Pin|ENABLE1_Pin
+                          |ENABLE2_Pin|ENABLE3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
