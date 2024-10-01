@@ -12,6 +12,11 @@ int ledStateArray[] = {0, 0, 0, 0, 0, 0, 0};
 int ledIdx = 0;
 int ledBuffer[4] = {1, 2, 3, 4};
 
+
+/*LED MATRIX VARIABLE*/
+const int matrixRows[8] = {ROW0_Pin, ROW1_Pin, ROW2_Pin, ROW3_Pin, ROW4_Pin, ROW5_Pin, ROW6_Pin, ROW7_Pin};
+const int matrixCols[8] = {ENM0_Pin, ENM1_Pin, ENM2_Pin, ENM3_Pin, ENM4_Pin, ENM5_Pin, ENM6_Pin, ENM7_Pin};
+
 int convertBinChar(char bin) {
 	return (bin == '1') ? 1 : 0;
 }
@@ -178,5 +183,62 @@ void update7SEG(int index) {
 	}
 }
 
+void enableAllRows() {
+	for (int i = 0; i < 8; i++) {
+		HAL_GPIO_WritePin(GPIOB, matrixRows[i], RESET);
+	}
+}
+
+void enableAllCols() {
+	for (int i = 0; i < 8; i++) {
+		HAL_GPIO_WritePin(GPIOA, matrixCols[i], RESET);
+	}
+}
+
+void enableSingleRow(int rowNum) {
+	for (int i = 0; i < 8; i++) {
+		if (i == rowNum) {
+			HAL_GPIO_WritePin(GPIOB, matrixRows[i], RESET);
+		} else {
+			HAL_GPIO_WritePin(GPIOB, matrixRows[i], SET);
+		}
+	}
+}
+
+void clearAll() {
+	for (int i = 0; i < 8; i++) {
+		HAL_GPIO_WritePin(GPIOB, matrixRows[i], SET);
+	}
+}
+
+void displayCol(int value) {
+	for (int i = 0; i < 8; i++) {
+		int state = value & (1 << 7);
+		HAL_GPIO_WritePin(GPIOA, matrixCols[i], !(state != 0));
+		value = value << 1;
+	}
+}
+
+void displayAnimation(int hexCode[8], int *idxHex, int duration) {
+	if (*idxHex > 7) {
+		*idxHex = 0;
+	}
+	enableSingleRow(*idxHex);
+	displayCol(hexCode[*idxHex]);
+	if (matrixLedFlag == 1) {
+		setMatrixLedTimer(duration);
+		clearAll();
+		*idxHex += 1;
+	}
+}
+
+void testingDisplayLedMatrix(int value) {
+	enableSingleRow(0); // first row
+	for (int i = 0; i < 8; i++) {
+		int state = value & (1 << 7);
+		HAL_GPIO_WritePin(GPIOA, matrixCols[i], !(state != 0));
+		value = value << 1;
+	}
+}
 
 

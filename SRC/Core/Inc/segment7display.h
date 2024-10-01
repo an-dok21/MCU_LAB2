@@ -16,4 +16,15 @@ void displayPeriodLed(int num);
 void update7SEG(int index);
 void updateClockBuffer(int* hourPtr, int* minPtr);
 void digitalClock(int* hourPtr, int* minPtr, int* secPtr, int* idxPtr, int timerDuration);
+
+/*Exercise 9, 10*/
+/* Matrix Led 8x8
+ * */
+void clearAll();
+void enableAllRows();
+void enableAllCols();
+void displayCol(int value);
+void testingDisplayLedMatrix(int value);
+void displayAnimation(int hexCode[8], int *idxHex, int duration);
+
 #endif /* INC_SEGMENT7DISPLAY_H_ */

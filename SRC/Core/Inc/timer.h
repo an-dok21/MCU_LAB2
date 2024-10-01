@@ -10,4 +10,8 @@ void timerRun();
 extern int doubleLedFlag;
 void setLedTimer(int duration);
 
+/*Exercise 9, 10*/
+extern int matrixLedFlag;
+void setMatrixLedTimer(int duration);
+
 #endif /* INC_TIMER_H_ */

@@ -10,6 +10,9 @@ int timerCnt = 0;
 int doubleLedFlag = 0;
 int doubleLedCounter = 0;
 
+int matrixLedFlag = 0;
+int matrixLedCounter = 0;
+
 void setTimer(int duration) {
 	timerCnt = duration;
 	timerFlag = 0;
@@ -21,6 +24,12 @@ void setTimer(int duration) {
 void setLedTimer(int duration) {
 	doubleLedCounter = duration;
 	doubleLedFlag = 0;
+}
+
+/*Exercise 9, 10*/
+void setMatrixLedTimer(int duration) {
+	matrixLedCounter = duration;
+	matrixLedFlag = 0;
 }
 
 
@@ -38,6 +47,14 @@ void timerRun() {
 		doubleLedCounter--;
 		if (doubleLedCounter <= 0) {
 			doubleLedFlag = 1;
+		}
+	}
+
+	/*Matrix Led Timer*/
+	if (matrixLedCounter > 0) {
+		matrixLedCounter--;
+		if (matrixLedCounter <= 0) {
+			matrixLedFlag = 1;
 		}
 	}
 }
