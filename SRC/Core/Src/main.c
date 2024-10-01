@@ -17,8 +17,8 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+//#include "main.h"
 #include "segment7display.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -112,26 +112,16 @@ int main(void)
 //  HAL_GPIO_WritePin(GPIOB, ROW2_Pin, SET);
 //  enableAllRows();
 //  enableAllCols();
-  setMatrixLedTimer(1);
+  setMatrixLedTimer(2);
   int hexCode[8] = {0x00,0x66,0xff,0xff,0xff,0x7e,0x3c,0x18};
   int idx = 0;
   int *idxHex = &idx;
-  int duration = 1;
+  int duration = 2;
 //  int value = 0x66;
   while (1)
   {
     /* USER CODE END WHILE */
-	  if (doubleLedFlag == 1) {
-		  HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
-		  setLedTimer(100);
-	  }
-//	  digitalClock(hourPtr, minPtr, secPtr, idxPtr, timerDuration);
-	  if (timerFlag == 1) {
-		  HAL_GPIO_TogglePin(GPIOA, LED_RED_Pin);
-		  setTimer(50);
-	  }
 	  displayAnimation(hexCode, idxHex, duration);
-//	  testingDisplayLedMatrix(value);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -192,7 +182,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 7999;
+  htim2.Init.Prescaler = 799;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;

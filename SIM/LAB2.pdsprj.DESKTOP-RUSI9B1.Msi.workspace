@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffffb90000000c000000c7060000f0030000</PLACEMENT>
+  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffffb90000000c000000c7060000f0030000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
    <POPUP w="800" x="106" flags="00000002" y="236" h="200" pid="0" iid="-1">
     <PROPERTIES>
-     <ITEM name="Message Column Width">649</ITEM>
+     <ITEM name="Message Column Width">528</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
      <ITEM name="Time Column Width">120</ITEM>
@@ -334,13 +334,13 @@
    </POPUP>
    <POPUP w="600" x="746" flags="0000002a" y="620" h="400" pid="100" iid="2">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"",8000524,0000,BEEC,FE53,454258856
+     <ITEM name="Breakpoint 0">"",8000524,0000,D2F7,FE53,454258856
 </ITEM>
-     <ITEM name="Breakpoint 1">"",800052C,0000,D8A8,FE53,-626025280
+     <ITEM name="Breakpoint 1">"",800052C,0000,D2F7,FE53,-626025280
 </ITEM>
-     <ITEM name="Breakpoint 2">"",8000532,0000,59D0,FE53,-1972264
+     <ITEM name="Breakpoint 2">"",8000532,0000,9DD7,FE53,-1972264
 </ITEM>
-     <ITEM name="Breakpoint 3">"",8000548,0000,5D19,FE53,1832364216
+     <ITEM name="Breakpoint 3">"",8000548,0000,18D0,FE53,1832364216
 </ITEM>
      <ITEM name="CaseSensitive">No</ITEM>
      <ITEM name="DISPADDRS">Yes</ITEM>
